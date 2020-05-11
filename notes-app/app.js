@@ -20,8 +20,21 @@ yargs.version('1.1.0');
 yargs.command({
     command:'add',
     describe: "Add a new note",
-    handler: () =>{
-        console.log("adding a new note!");
+    builder:{
+        title :{
+            describe:"Title of note",
+            demandOption:true,
+            type:'string'
+        },
+        body :{
+            describe:"Body of note",
+            demandOption:true,
+            type:'string'
+        },
+    },
+    handler(argv){
+        console.log(`Title: ${argv.title}`);
+        console.log(`Body: ${argv.body}`);
     }
 });
 
@@ -29,8 +42,15 @@ yargs.command({
 yargs.command({
     command:'remove',
     describe: "Remove a new note",
-    handler: () =>{
-        console.log("removing a note!");
+    builder:{
+        title :{
+            describe:"Title of note",
+            demandOption:true,
+            type:'string'
+        },
+    },
+    handler(){
+        console.log(`Title: ${argv.title}`);
     }
 });
 
@@ -38,8 +58,15 @@ yargs.command({
 yargs.command({
     command:'read',
     describe: "Read a new note",
-    handler: () =>{
-        console.log("reading a note!");
+    builder:{
+        title :{
+            describe:"Title of note",
+            demandOption:true,
+            type:'string'
+        },
+    },
+    handler(){
+        console.log(`Title: ${argv.title}`);
     }
 });
 
@@ -47,10 +74,10 @@ yargs.command({
 yargs.command({
     command:'list',
     describe: "List all notes",
-    handler: () =>{
+    handler(){
         console.log("listing all notes!");
     }
 });
 
-
-console.log(yargs.argv);
+//ensure yargs works
+yargs.parse();
