@@ -1,6 +1,10 @@
 //require modules
 const fs = require('fs');
 
+
+//require npm mopdules
+const chalk = require('chalk');
+
 //define variables
 const log = console.log;
 
@@ -27,9 +31,9 @@ const addNote = (title, body) =>{
         });
 
         saveNotes(notes);
-        log(`New note added`);
+        log(chalk.green.inverse(`New note added`));
     }else{
-        log(`Note title exists`);
+        log(chalk.green.inverse(`Note title exists`));
     }
 }
 
@@ -43,9 +47,13 @@ const removeNote = (title) =>{
          return note.title !== title   
     });
 
-    saveNotes(cleanNotes);
-    log(`Note Removed`);
-   
+    //check if note exists
+    if(notes.length > cleanNotes.length){
+        saveNotes(cleanNotes);
+        log(chalk.green.inverse(`${title} - Has been Removed`));
+    }else{
+        log(chalk.red.inverse(`${title} - Does not exist!`));
+    }
 }
 
 //save all notes
