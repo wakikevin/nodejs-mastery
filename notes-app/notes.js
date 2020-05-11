@@ -10,7 +10,17 @@ const log = console.log;
 
 //function to get notes
 const getNotes = ()=>{
-    return "Your notes are ...";
+    log(chalk.blue.underline(`Your notes : `));
+    var notes = loadNotes();
+    if(notes.length > 0){
+        //print each note
+        notes.forEach((note)=>{
+            log(`Title: ${note.title}`);
+            log('-------------');
+        });
+    } else{
+        log(chalk.red.inverse(`No notes found!`));
+    }
 }
 
 //add note function
@@ -19,9 +29,10 @@ const addNote = (title, body) =>{
     var notes = loadNotes();
 
     //check if title exists
-    var duplicateNotes = notes.filter((note)=>note.title === title);
+    //var duplicateNotes = notes.filter((note)=>note.title === title);
+    var duplicateNote = notes.find((note)=>note.title === title);
 
-    if(duplicateNotes.length === 0){
+    if(!duplicateNote){
         //add new note to the notes object
         notes.push({
             title:title,
@@ -70,9 +81,26 @@ const loadNotes = ()=>{
     }
 } 
 
+//add note function
+const readNote = (title) =>{
+    //get all notes
+    var notes = loadNotes();
+
+    //check if title exists
+    var noteToRead = notes.find((note)=>note.title === title);
+
+    if(noteToRead){
+        log(chalk.blue(`Title: ${noteToRead.title}`));
+        log(`Body: ${noteToRead.body}`);
+    }else{
+        log(chalk.red.inverse(`Note title doesnt exists`));
+    }
+}
+
 //export the required functions & variables
 module.exports = {
     getNotes,
     addNote,
-    removeNote
+    removeNote,
+    readNote
 }
