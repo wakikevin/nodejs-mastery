@@ -4,6 +4,7 @@
 //import npm modules
 const validator = require("validator");
 //import validator from "validator"; //es6
+const chalk = require("chalk");
 
 //import project files
 //const utils = require('./utils');
@@ -17,3 +18,7 @@ console.log(notesList);
 //check if email is valid
 console.log(validator.isEmail("dev.gsoft@gmail.com"));
 console.log(validator.isURL("https://wakikevin.io"));
+
+//chalk challenge
+console.log(chalk.green("Success!"));
+console.log(chalk.red.bold.inverse(`this is an error`));
