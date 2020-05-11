@@ -3,10 +3,12 @@
 
 //import npm modules
 const validator = require("validator");
+//import validator from "validator"; //es6
 
 //import project files
 //const utils = require('./utils');
 const notes = require('./notes');
+//import notes from "./notes";
 
 //get the notes
 var notesList = notes.getNotes();
