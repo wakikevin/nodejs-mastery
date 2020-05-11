@@ -21,4 +21,4 @@ console.log(validator.isURL("https://wakikevin.io"));
 
 //chalk challenge
 console.log(chalk.green("Success!"));
-console.log(chalk.red.bold.inverse(`this is an error`));
+console.log(chalk.red.bold.inverse(`This is an error.`));
