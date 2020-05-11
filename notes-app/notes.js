@@ -32,6 +32,8 @@ const addNote = (title, body) =>{
     //var duplicateNotes = notes.filter((note)=>note.title === title);
     var duplicateNote = notes.find((note)=>note.title === title);
 
+    //debugger;
+
     if(!duplicateNote){
         //add new note to the notes object
         notes.push({
