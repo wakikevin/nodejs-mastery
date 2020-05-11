@@ -19,9 +19,7 @@ const addNote = (title, body) =>{
     var notes = loadNotes();
 
     //check if title exists
-    var duplicateNotes = notes.filter((note)=>{
-         return note.title === title   
-    });
+    var duplicateNotes = notes.filter((note)=>note.title === title);
 
     if(duplicateNotes.length === 0){
         //add new note to the notes object
@@ -43,9 +41,7 @@ const removeNote = (title) =>{
     var notes = loadNotes();
 
     //check if title exists and remove it
-    var cleanNotes = notes.filter((note)=>{
-         return note.title !== title   
-    });
+    var cleanNotes = notes.filter((note)=>note.title !== title);
 
     //check if note exists
     if(notes.length > cleanNotes.length){
